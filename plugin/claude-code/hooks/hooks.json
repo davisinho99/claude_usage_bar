@@ -1,5 +1,5 @@
 {
-  "description": "Usage bar — monitors context consumption and updates terminal title with a live progress bar",
+  "description": "Usage bar — monitors context consumption and displays a live progress bar in Claude Code's statusLine",
   "hooks": {
     "SessionStart": [
       {
@@ -9,17 +9,6 @@
             "command": "${CLAUDE_PLUGIN_ROOT}/scripts/session-start.sh",
             "timeout": 10,
             "statusMessage": "Starting usage bar monitor..."
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/pre-tool-use.sh",
-            "timeout": 2
           }
         ]
       }
