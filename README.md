@@ -37,10 +37,12 @@ claude plugins install usage-bar
 ```bash
 # Clonar el repositorio
 git clone https://github.com/davisinho99/claude_usage_bar.git
-cd claude-usage-bar
+cd claude_usage_bar
 
-# Instalar desde ruta local
-claude plugins marketplace add ./plugin/claude-code --scope user
+# Añadir marketplace desde la raíz del repo
+claude plugins marketplace add ./ --scope user
+
+# Instalar
 claude plugins install usage-bar
 ```
 
