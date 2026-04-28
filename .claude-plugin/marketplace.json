@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "usage-bar",
+  "description": "Real-time usage bar in terminal title — shows context window consumption as a live progress bar",
+  "owner": {
+    "name": "atoxgato"
+  },
+  "plugins": [
+    {
+      "name": "usage-bar",
+      "description": "Shows context consumption as a live progress bar in the terminal title bar. Updates on every tool use. Green <60%, yellow 60-85%, red >85%.",
+      "version": "0.1.0",
+      "author": {
+        "name": "atoxgato"
+      },
+      "source": "./plugin/claude-code",
+      "category": "productivity"
+    }
+  ]
+}
