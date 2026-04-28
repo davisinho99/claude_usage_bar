@@ -1,0 +1,9 @@
+{
+  "name": "usage-bar",
+  "description": "Displays Claude context window usage as a progress bar in the terminal title bar, updating in real time on every tool call. No configuration needed — install and forget.",
+  "version": "0.1.0",
+  "author": {
+    "name": "atoxgato"
+  },
+  "license": "MIT"
+}

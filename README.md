@@ -26,7 +26,7 @@ Un plugin para [Claude Code](https://docs.anthropic.com/en/docs/claude-code) que
 
 ```bash
 # Añadir desde tu repositorio (sustituye por tu usuario/repo)
-claude plugins marketplace add github:TU_USUARIO/claude-usage-bar
+claude plugins marketplace add github:davisinho99/claude_usage_bar
 
 # Instalar
 claude plugins install usage-bar
@@ -36,7 +36,7 @@ claude plugins install usage-bar
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/TU_USUARIO/claude-usage-bar.git
+git clone https://github.com/davisinho99/claude_usage_bar.git
 cd claude-usage-bar
 
 # Instalar desde ruta local
