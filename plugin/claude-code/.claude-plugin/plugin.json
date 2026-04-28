@@ -1,0 +1,9 @@
+{
+  "name": "usage-bar",
+  "description": "Real-time usage bar in terminal title — shows context consumption as a progress bar",
+  "version": "0.1.0",
+  "author": {
+    "name": "atoxgato"
+  },
+  "license": "MIT"
+}
