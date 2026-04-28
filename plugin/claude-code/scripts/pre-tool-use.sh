@@ -15,6 +15,14 @@ _update_title() {
     if ! [[ "$pct" =~ ^[0-9]+([.][0-9]+)?$ ]]; then
         pct=0
     fi
+    # Guard against non-numeric tokens
+    if ! [[ "$input_tokens" =~ ^[0-9]+$ ]] || \
+       ! [[ "$cache_read" =~ ^[0-9]+$ ]] || \
+       ! [[ "$cache_write" =~ ^[0-9]+$ ]]; then
+        input_tokens=0
+        cache_read=0
+        cache_write=0
+    fi
 
     # Build bar: ████░░░░░░░░░░░░ (20 chars)
     local bar_len=20
@@ -53,7 +61,7 @@ _update_title() {
 
 # Read from cache file (instant — no subprocess)
 if [[ -f "$_usage_file" ]]; then
-    local pct inp cache_r cache_w ctx
+    # Note: no 'local' — these are global vars used by the python3 calls below
 
     if command -v python3 &>/dev/null; then
         pct=$(python3 -c "import json; d=json.load(open('$_usage_file')); print(d.get('remaining_percentage', 0))" 2>/dev/null || echo "0")
