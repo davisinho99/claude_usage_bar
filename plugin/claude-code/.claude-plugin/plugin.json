@@ -1,9 +1,14 @@
 {
-  "name": "usage-bar",
-  "description": "Real-time usage bar in terminal title — shows context consumption as a progress bar",
+  "id": "usage-bar",
+  "name": "Usage Bar",
   "version": "0.1.0",
-  "author": {
-    "name": "atoxgato"
-  },
-  "license": "MIT"
+  "description": "Muestra el consumo de tu sesión de Claude en la statusLine de Claude Code, en tiempo real. Visualiza el context window con una barra de progreso y muestra tokens de entrada, cache read y cache write.",
+  "author": "davisinho99",
+  "repository": "https://github.com/davisinho99/claude_usage_bar",
+  "homepage": "https://github.com/davisinho99/claude_usage_bar",
+  "license": "MIT",
+  "platforms": ["macos", "linux"],
+  "requirements": ["Claude Code >= 1.0", "python3"],
+  "keywords": ["claude-code", "statusline", "usage", "tokens", "monitor"],
+  "categories": ["productivity", "utilities"]
 }

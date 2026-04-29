@@ -3,7 +3,7 @@
 # Run after plugin install to enable the usage bar
 
 SETTINGS="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/settings.json"
-PLUGIN_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+PLUGIN_ROOT="$(cd "$(dirname "$0")/.." && realpath -eP .)"
 
 # Detect OS for shell
 if [[ "$(uname)" == "Darwin" ]] || [[ -z "$OSTYPE" ]] || [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -45,6 +45,10 @@ settings['statusLine'] = {
 }
 
 with open(settings_path, 'w') as f:
+    # Backup existing file before writing
+    import shutil
+    shutil.copy(settings_path, settings_path + '.bak')
+
     json.dump(settings, f, indent=2)
 
 print('statusLine added to $SETTINGS')

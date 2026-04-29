@@ -3,8 +3,6 @@
 # Starts the background usage monitor that writes to the cache file.
 # The statusline script reads this file continuously.
 
-set -e
-
 SESSION_DIR="${CLAUDE_SESSION_DIR:-/tmp}"
 PID_FILE="$SESSION_DIR/claude-usage-bar.pid"
 USAGE_CACHE="$SESSION_DIR/claude-usage.json"
@@ -26,12 +24,18 @@ fi
 
 # Start background monitor
 (
+    # Save PID immediately (before &) to get the subshell's own PID
+    echo $$ > "$PID_FILE"
+
     # Wait for session to warm up
     sleep 3
 
     while true; do
-        # Get usage data
-        USAGE_OUT=$(claude --print "/usage" 2>/dev/null)
+        # Get usage data (with error handling - don't exit on failure)
+        USAGE_OUT=$(claude --print "/usage" 2>/dev/null) || {
+            sleep "$POLL_INTERVAL"
+            continue
+        }
 
         if [[ -n "$USAGE_OUT" ]] && echo "$USAGE_OUT" | grep -qi "valid"; then
             # Parse remaining percentage
@@ -52,5 +56,4 @@ EOF
         sleep "$POLL_INTERVAL"
     done
 ) &
-
-echo $! > "$PID_FILE"
+disown
